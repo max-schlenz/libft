@@ -6,28 +6,15 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:40:50 by mschlenz          #+#    #+#             */
-/*   Updated: 2022/03/30 14:41:07 by mschlenz         ###   ########.fr       */
+/*   Updated: 2022/04/07 19:24:07 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
-    if (c >= 97 && c <= 122)
-        c -= 32;
-    return c;
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }
-
-/*
-int main(void)
-{
-    int i = 97;
-    
-    while (i >= 97 && i <= 122)
-        {
-        printf("%c >> %c\n", i, ft_toupper(i));
-        i++;
-        }
-}
-*/

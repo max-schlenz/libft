@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 14:57:24 by mschlenz          #+#    #+#             */
-/*   Updated: 2022/04/07 19:18:16 by mschlenz         ###   ########.fr       */
+/*   Created: 2022/04/06 12:35:19 by mschlenz          #+#    #+#             */
+/*   Updated: 2022/04/07 19:01:07 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *c)
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	r;
+	int	is_neg;
 
 	i = 0;
-	while (c[i] != '\0')
-		i++;
-	return (i);
+	r = 0;
+	is_neg = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+			i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+		is_neg = -1;
+	i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+	r = r * 10 + str[i] - '0';
+	i++;
+	}
+	return (r * is_neg);
 }

@@ -1,23 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 14:57:24 by mschlenz          #+#    #+#             */
-/*   Updated: 2022/04/07 19:18:16 by mschlenz         ###   ########.fr       */
+/*   Created: 2022/04/07 20:00:37 by mschlenz          #+#    #+#             */
+/*   Updated: 2022/04/11 17:07:36 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	unsigned int	buf_n;
 
-	i = 0;
-	while (c[i] != '\0')
-		i++;
-	return (i);
+	buf_n = n;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		buf_n *= -1;
+	}
+	if (buf_n > 9)
+	{
+		ft_putnbr_fd((buf_n / 10), fd);
+		ft_putnbr_fd((buf_n % 10), fd);
+	}
+	else
+		ft_putchar_fd((buf_n + '0'), fd);
 }
+
+/*
+#include "ft_putchar_fd.c"
+
+int main(void)
+{
+	int n = -2147483648;
+	ft_putnbr_fd(n, 1);
+}
+*/
